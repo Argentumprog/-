@@ -234,7 +234,7 @@ int main()
 	if (worker.access == 1 && opened) {
 		while (choice != '0') {
 
-			cout << endl << "Выберите действие:" << endl << "1.Отсортировать" << endl << "2.Добавить новый аккаунт" << endl << "3.Изменить аккаунт" << endl << "4.Удалить аккаунт" << endl << "5.Поиск" << endl << "6. Изменить свой пароль" << endl << "0.Закончить работу" << endl;
+			cout << endl << "Выберите действие:" << endl << "1.Отсортировать" << endl << "2.Добавить новый аккаунт" << endl << "3.Изменить аккаунт" << endl << "4.Удалить аккаунт" << endl << "5.Поиск" << endl << "6.Изменить свой пароль" << endl << "0.Закончить работу" << endl;
 			cin >> choice;
 			switch (choice) {
 			case '1':
@@ -539,6 +539,11 @@ int main()
 				cout << "Введите ФИО сотрудника:" << endl;
 				cin >> f >> i >> o;
 				string fio = f + " " + i + " " + o;
+				if (fio == worker.FIO) {
+					cout << "Вы не можете удалить свой аккаунт!" << endl;
+					system("pause");
+					break;
+				}
 				int p1 = -1, p2 = -1;
 				for (int k = 0;k < size(listworkers);k++) {
 					if (fio == listworkers[k].FIO) { p1 = k; break; }
@@ -756,7 +761,8 @@ int main()
 		}
 
 		while (choice != '0' && hereinpr != -1) {
-			cout << endl << "Выберите действие:" << endl << "1.Узнать информацию о себе в проекте" << endl << "2. Изменить пароль" << endl;
+			system("CLS");
+			cout << endl << "Выберите действие:" << endl << "1.Узнать информацию о себе в проекте" << endl << "2. Изменить пароль" << endl << "0.Закончить работу" << endl;
 			cin >> choice;
 			switch (choice) {
 			case '1':
@@ -794,6 +800,11 @@ int main()
 			{
 				changepassw();
 				system("pause");
+				break;
+			}
+			case '0':
+			{
+				break;
 			}
 			default:
 			{
@@ -801,16 +812,6 @@ int main()
 				break;
 			}
 			}
-			ofstream fout;
-			fout.open(way, ofstream::trunc);
-			for (int k = 0;k < size(listofproj);k++)
-			{
-				fout << listofproj[k].FIO << endl;
-				fout << listofproj[k].work << endl;
-				fout << listofproj[k].cost << endl;
-				fout << listofproj[k].hours << endl;
-			}
-			fout.close();
 
 			ofstream fut;
 			fut.open("workers.txt", ofstream::trunc);
@@ -821,7 +822,6 @@ int main()
 				fut << listworkers[k].access << endl;
 			}
 			fut.close();
-
 		}
 	}
 }
