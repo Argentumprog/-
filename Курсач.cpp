@@ -73,7 +73,8 @@ void showtotal() {
 	GoTo(100, 3);
 	cout << "|Количество часов:|";
 	GoTo(0, 4);
-	int kon = 0, total = 0;
+	int kon = 0;
+	float total = 0;
 	for (int k = 0;k < 119;k++) { cout << "-"; }
 	for (int k = 0;k < size(listofproj);k++, kon++) {
 		GoTo(0, 5 + k * 2);
@@ -273,6 +274,22 @@ void menuAdmadd() {
 			}
 		}
 		add.FIO = f + " " + i + " " + o;
+		nonumbers = true;
+		for (int j = 0;j < add.FIO.length() && nonumbers == true;j++) {
+			nonumbers = false;
+			for (int i = 0;i < alfrusanden.length();i++)
+			{
+				if (add.FIO[j]==alfrusanden[i]) {
+					nonumbers = true;
+					break;
+				}
+			}
+		}
+		if (nonumbers == false) {
+			cout << "Только буквы могут быть использованы для ввода ФИО" << endl;
+			system("pause");
+			break;
+		}
 		ad.FIO = add.FIO;
 		cout << "Введите пароль к его аккаунту:" << endl;
 		cin >> add.passw;
@@ -284,11 +301,17 @@ void menuAdmadd() {
 			cout << "Данный ввод не подходит" << endl;
 			break;
 		}
+		if (add.access!=1 && add.access!=2) add.access = 2;
 		cout << "Введите название его деятельности(вид работы):" << endl;
 		cin.ignore();
 		getline(cin, ad.work);
 		cout << "Введите количество часов его работы:" << endl;
-		cin >> ad.cost;
+		cin >> ad.hours;
+		if (ad.hours < 1) {
+			cout << "Такого количества часов у работника не может быть" << endl;
+			system("pause");
+			break;
+		}
 		if (cin.fail()) {
 			cin.clear();
 			cin.ignore();
@@ -296,7 +319,12 @@ void menuAdmadd() {
 			break;
 		}
 		cout << "Введите стоимость одного часа данного сотрудника:" << endl;
-		cin >> ad.hours;
+		cin >> ad.cost;
+		if (ad.cost < 0) {
+			cout << "Такой стоимости часа у работника не может быть" << endl;
+			system("pause");
+			break;
+		}
 		if (cin.fail()) {
 			cin.clear();
 			cin.ignore();
@@ -320,6 +348,22 @@ void menuAdmadd() {
 			}
 		}
 		add.FIO = f + " " + i + " " + o;
+		nonumbers = true;
+		for (int j = 0;j < add.FIO.length() && nonumbers == true;j++) {
+			nonumbers = false;
+			for (int i = 0;i < alfrusanden.length();i++)
+			{
+				if (add.FIO[j] == alfrusanden[i]) {
+					nonumbers = true;
+					break;
+				}
+			}
+		}
+		if (nonumbers == false) {
+			cout << "Только буквы могут быть использованы для ввода ФИО" << endl;
+			system("pause");
+			break;
+		}
 		cout << "Введите пароль к его аккаунту:" << endl;
 		cin >> add.passw;
 		cout << "Введите его статус:" << endl << "1.Администратор" << endl << "2.Пользователь" << endl;
@@ -330,6 +374,7 @@ void menuAdmadd() {
 			cout << "Данный ввод не подходит" << endl;
 			break;
 		}
+		if (add.access != 1 && add.access != 2) add.access = 2;
 		listworkers.push_back(add);
 		break;
 	}
@@ -361,7 +406,12 @@ void menuAdmadd() {
 		cin.ignore();
 		getline(cin, ad.work);
 		cout << "Введите количество часов его работы:" << endl;
-		cin >> ad.cost;
+		cin >> ad.hours;
+		if (ad.hours < 1) {
+			cout << "Такого количества часов у работника не может быть" << endl;
+			system("pause");
+			break;
+		}
 		if (cin.fail()) {
 			cin.clear();
 			cin.ignore();
@@ -369,7 +419,18 @@ void menuAdmadd() {
 			break;
 		}
 		cout << "Введите стоимость одного часа данного сотрудника:" << endl;
-		cin >> ad.hours;
+		cin >> ad.cost;
+		if (ad.cost < 0) {
+			cout << "Такой стоимости часа у работника не может быть" << endl;
+			system("pause");
+			break;
+		}
+		if (cin.fail()) {
+			cin.clear();
+			cin.ignore();
+			cout << "Данный ввод не подходит" << endl;
+			break;
+		}
 		if (cin.fail()) {
 			cin.clear();
 			cin.ignore();
@@ -570,6 +631,23 @@ void menuAdm() {
 					{
 						cout << "Введите новое ФИО сотрудника:" << endl;
 						cin >> f >> i >> o;
+						string fio = f + " " + i + " " + o;
+						nonumbers = true;
+						for (int j = 0;j < fio.length() && nonumbers == true;j++) {
+							nonumbers = false;
+							for (int i = 0;i < alfrusanden.length();i++)
+							{
+								if (fio[j] == alfrusanden[i]) {
+									nonumbers = true;
+									break;
+								}
+							}
+						}
+						if (nonumbers == false) {
+							cout << "Только буквы могут быть использованы для ввода ФИО" << endl;
+							system("pause");
+							break;
+						}
 						listworkers[p1].FIO = f + " " + i + " " + o;
 						break;
 					}
@@ -583,6 +661,7 @@ void menuAdm() {
 							cout << "Данный ввод не подходит" << endl;
 							break;
 						}
+						if (add.access != 1 && add.access != 2) add.access = 2;
 						break;
 					}
 					case '3':
@@ -650,7 +729,14 @@ void menuAdm() {
 					case '4':
 					{
 						cout << "Введите количество часов его работы:" << endl;
-						cin >> listofproj[p2].hours;
+						int hours;
+						cin >> hours;
+						if (hours < 1) {
+							cout << "Такого количества часов у работника не может быть" << endl;
+							system("pause");
+							break;
+						}
+						listofproj[p2].hours = hours;
 						if (cin.fail()) {
 							cin.clear();
 							cin.ignore();
@@ -662,7 +748,14 @@ void menuAdm() {
 					case '5':
 					{
 						cout << "Введите стоимость одного часа данного сотрудника:" << endl;
-						cin >> listofproj[p2].cost;
+						float cost;
+						cin >> cost;
+						if (cost < 0) {
+							cout << "Такой стоимости одного часа у работника не может быть" << endl;
+							system("pause");
+							break;
+						}
+						listofproj[p2].cost = cost;
 						if (cin.fail()) {
 							cin.clear();
 							cin.ignore();
@@ -860,6 +953,7 @@ void menuUser() {
 		fut.close();
 	}
 }
+
 int main()
 {
 	SetConsoleCP(1251);

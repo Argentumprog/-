@@ -11,13 +11,14 @@ using namespace std;
 static HANDLE hStdOut = GetStdHandle(STD_OUTPUT_HANDLE);
 void GoTo(short x, short y);
 
+static string alfrusanden = " àáâãäå¸æùèéêëìíîïğñòóôõö÷øùúûüışÿÀÁÂÃÄÅ¨ÆÇÈÉÊËÌÍÎÏĞÑÒÓÔÕÖ×ØÙÚÛÜİŞßabcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 static int hereworker = 0;
 
 struct project
 {
 	string FIO;
 	string work;
-	int cost;
+	float cost;
 	int hours;
 
 };
@@ -39,7 +40,7 @@ static vector <project> listofproj;
 static vector <int> poisk;
 static char choice = '1', chois = '0', contin = '1';
 static string f, i, o, namef, way = "_";
-static bool opened = false;
+static bool opened = false, nonumbers;
 static Workers worker, add;
 static project person, ad;
 

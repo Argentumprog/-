@@ -1,3 +1,11 @@
+Фамилия Имя Отчество
+дело
+34
+100
+Artemiy Aderikho Vladimirovich
+doing everything
+1
+99
 Adm Adm Adm
 managing
 44
@@ -10,11 +18,3 @@ Somebody Qwe Rty
 making code
 9
 4
-Artemiy Aderikho Vladimirovich
-doing everything
-1
-99
-Фамилия Имя Отчество
-дело
-0
-100
