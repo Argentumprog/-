@@ -15,10 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="кодик(что смог то смог).cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Functions.cpp">
+    <ClCompile Include="Курсач.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

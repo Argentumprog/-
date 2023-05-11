@@ -24,6 +24,7 @@
     <ProjectGuid>{21dbd234-d49a-4707-bf76-25266412d913}</ProjectGuid>
     <RootNamespace>кодикчтосмогтосмог</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>Курсач</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -127,8 +128,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Functions.cpp" />
-    <ClCompile Include="кодик(что смог то смог).cpp" />
+    <ClCompile Include="Курсач.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Header.h" />

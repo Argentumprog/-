@@ -169,6 +169,7 @@ void chooseproj() {
 			}
 			else {
 				opened = true;
+				listofproj.clear();
 				while (!fin.eof())
 				{
 					getline(fin, person.FIO);
@@ -880,5 +881,6 @@ int main()
 			cin.ignore();
 			cout << "Данный ввод не подходит" << endl;
 		}
+		choice = '1';
 	}while(contin == '1');
 }
