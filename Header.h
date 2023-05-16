@@ -11,7 +11,7 @@ using namespace std;
 static HANDLE hStdOut = GetStdHandle(STD_OUTPUT_HANDLE);
 void GoTo(short x, short y);
 
-static string alfrusanden = " àáâãäå¸æùèéêëìíîïğñòóôõö÷øùúûüışÿÀÁÂÃÄÅ¨ÆÇÈÉÊËÌÍÎÏĞÑÒÓÔÕÖ×ØÙÚÛÜİŞßabcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+static string alfrusanden = "- àáâãäå¸æùèéêëìíîïğñòóôõö÷øùúûüışÿÀÁÂÃÄÅ¨ÆÇÈÉÊËÌÍÎÏĞÑÒÓÔÕÖ×ØÙÚÛÜİŞßabcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 static int hereworker = 0;
 
 struct project

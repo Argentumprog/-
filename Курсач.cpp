@@ -10,8 +10,8 @@ bool checkalf(string st1, string st2) {
 
 	do {
 		i++;
-		if (i >= size(st1) - 1 || i >= size(st2) - 1) { return first; }
-		if (st1[i] > st2[i]) { first = false; }
+		if (i >= size(st1) - 1 || i >= size(st2) - 1) return first;
+		if (st1[i] > st2[i]) first = false;
 	} while (st1[i] == st2[i]);
 
 	return first;
@@ -149,6 +149,7 @@ void logIn() {
 		}
 		if (worker.access == 0) {
 			cout << "Неправильное ФИО или пароль.\nВы можете повторить попытку или выти из приложения." << endl;
+			cin.ignore(255,'\n');
 			system("pause");
 		}
 	}
