@@ -955,6 +955,7 @@ void menuUser() {
 	}
 }
 
+
 int main()
 {
 	SetConsoleCP(1251);
